@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/User.iml" filepath="$PROJECT_DIR$/.idea/modules/User.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/User.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/User.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/User.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/User.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/User.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/User.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/User.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/User.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/signinwithapplebutton/User.signinwithapplebutton.iml" filepath="$PROJECT_DIR$/.idea/modules/signinwithapplebutton/User.signinwithapplebutton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/signinwithapplebutton/User.signinwithapplebutton.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/signinwithapplebutton/User.signinwithapplebutton.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/signinwithapplebutton/User.signinwithapplebutton.main.iml" filepath="$PROJECT_DIR$/.idea/modules/signinwithapplebutton/User.signinwithapplebutton.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/signinwithapplebutton/User.signinwithapplebutton.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/signinwithapplebutton/User.signinwithapplebutton.unitTest.iml" />
+    </modules>
+  </component>
+</project>

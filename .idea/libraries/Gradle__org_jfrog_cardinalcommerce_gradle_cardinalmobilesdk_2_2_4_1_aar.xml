@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jfrog.cardinalcommerce.gradle:cardinalmobilesdk:2.2.4-1@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fdd1f7645a1db3afc4f034f42dafcad6/jetified-cardinalmobilesdk-2.2.4-1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fdd1f7645a1db3afc4f034f42dafcad6/jetified-cardinalmobilesdk-2.2.4-1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fdd1f7645a1db3afc4f034f42dafcad6/jetified-cardinalmobilesdk-2.2.4-1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ef86dd582d10c16e4294acb92dd0cec7/jetified-cardinalmobilesdk-2.2.4-1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ef86dd582d10c16e4294acb92dd0cec7/jetified-cardinalmobilesdk-2.2.4-1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ef86dd582d10c16e4294acb92dd0cec7/jetified-cardinalmobilesdk-2.2.4-1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f86e987e5ed175815f508f5fd5cddac5/jetified-cardinalmobilesdk-2.2.4-1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f86e987e5ed175815f508f5fd5cddac5/jetified-cardinalmobilesdk-2.2.4-1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f86e987e5ed175815f508f5fd5cddac5/jetified-cardinalmobilesdk-2.2.4-1/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

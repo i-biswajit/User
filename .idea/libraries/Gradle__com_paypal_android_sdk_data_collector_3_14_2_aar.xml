@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="Gradle: com.paypal.android.sdk:data-collector:3.14.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a616bbc0089667a04e296d78b788ebe2/jetified-data-collector-3.14.2/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a616bbc0089667a04e296d78b788ebe2/jetified-data-collector-3.14.2/jars/libs/paypal-data-collector-4.1.2.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a616bbc0089667a04e296d78b788ebe2/jetified-data-collector-3.14.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a616bbc0089667a04e296d78b788ebe2/jetified-data-collector-3.14.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0d5e0eaeb5e5186c26a255eeb468e52e/jetified-data-collector-3.14.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0d5e0eaeb5e5186c26a255eeb468e52e/jetified-data-collector-3.14.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0d5e0eaeb5e5186c26a255eeb468e52e/jetified-data-collector-3.14.2/jars/libs/paypal-data-collector-4.1.2.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0d5e0eaeb5e5186c26a255eeb468e52e/jetified-data-collector-3.14.2/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e0c97057371d25e13f574e2f9b162201/jetified-data-collector-3.14.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e0c97057371d25e13f574e2f9b162201/jetified-data-collector-3.14.2/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e0c97057371d25e13f574e2f9b162201/jetified-data-collector-3.14.2/jars/libs/paypal-data-collector-4.1.2.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e0c97057371d25e13f574e2f9b162201/jetified-data-collector-3.14.2/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

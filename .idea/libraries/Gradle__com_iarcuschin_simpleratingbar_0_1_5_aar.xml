@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="Gradle: com.iarcuschin:simpleratingbar:0.1.5@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fb2aac0ac4c29dfc31fca3d0bc437856/jetified-simpleratingbar-0.1.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fb2aac0ac4c29dfc31fca3d0bc437856/jetified-simpleratingbar-0.1.5/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fb2aac0ac4c29dfc31fca3d0bc437856/jetified-simpleratingbar-0.1.5/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/345ff09dfd8c41d7a75f4d3e6f1c34fe/jetified-simpleratingbar-0.1.5/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/345ff09dfd8c41d7a75f4d3e6f1c34fe/jetified-simpleratingbar-0.1.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/345ff09dfd8c41d7a75f4d3e6f1c34fe/jetified-simpleratingbar-0.1.5/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/190355ffe60f542142cfaca4004e62b9/jetified-simpleratingbar-0.1.5/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/190355ffe60f542142cfaca4004e62b9/jetified-simpleratingbar-0.1.5/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/190355ffe60f542142cfaca4004e62b9/jetified-simpleratingbar-0.1.5/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.iarcuschin/simpleratingbar/0.1.5/b2876a7bbd89a740644b6b9d967b69da94c26052/simpleratingbar-0.1.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.iarcuschin/simpleratingbar/0.1.5/b0a6ea5ed50012f3131d402bcd4dc41e4bab8b0d/simpleratingbar-0.1.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
