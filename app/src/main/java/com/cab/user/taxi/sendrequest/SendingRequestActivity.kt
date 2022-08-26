@@ -231,7 +231,7 @@ class SendingRequestActivity : CommonActivity(), LinearTimer.TimerListener, Serv
 
 
     override fun onBackPressed() {
-        //super.onBackPressed();
+        super.onBackPressed();
     }
 
     /**
