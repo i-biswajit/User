@@ -10,6 +10,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dd10afe01091379e6f8f6f0552003b4e/jetified-LinearTimer-v2.1.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dd10afe01091379e6f8f6f0552003b4e/jetified-LinearTimer-v2.1.0/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dd10afe01091379e6f8f6f0552003b4e/jetified-LinearTimer-v2.1.0/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/65f8fe957e3d2da5a122f97ba4ebd990/jetified-LinearTimer-v2.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/65f8fe957e3d2da5a122f97ba4ebd990/jetified-LinearTimer-v2.1.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/65f8fe957e3d2da5a122f97ba4ebd990/jetified-LinearTimer-v2.1.0/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.krtkush/LinearTimer/v2.1.0/c0ffaba71829133cb17a9e0bb129bec658be7ac5/LinearTimer-v2.1.0-javadoc.jar!/" />

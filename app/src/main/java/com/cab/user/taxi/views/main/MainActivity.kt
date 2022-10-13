@@ -11,6 +11,7 @@ package com.cab.user.taxi.views.main
 import android.Manifest
 import android.animation.ValueAnimator
 import android.app.Activity
+import android.app.Dialog
 import android.content.*
 import android.content.pm.PackageManager
 import android.content.res.Resources
@@ -31,6 +32,7 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.TextUtils
 import android.text.method.ScrollingMovementMethod
+import android.util.Log
 import android.util.TypedValue
 import android.view.*
 import android.view.animation.Animation
@@ -924,7 +926,40 @@ class MainActivity : CommonActivity(), SeatsListAdapter.OnClickListener, Navigat
             chooseFilters()
         }
 
+        if (sessionManager.isDialogShown.equals("")) {
+            disclaimerDialog()
+        }
+
     }
+
+    private fun disclaimerDialog() {
+        try {
+            val dialog= Dialog(this,R.style.DialogCustomTheme)
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.setContentView(R.layout.disclaimer_dialog)
+
+            val tvDisclaimer = dialog.findViewById<TextView>(R.id.tvDisclaimer)
+            val tvAccept = dialog.findViewById<TextView>(R.id.tvAccept)
+
+            tvDisclaimer.setText(getString(R.string.location_disclaimer))
+
+            tvAccept.setOnClickListener {
+                sessionManager.isDialogShown = "yes"
+                dialog.dismiss()
+            }
+
+            dialog.setCancelable(false)
+            dialog.setCanceledOnTouchOutside(false)
+
+            if (!dialog.isShowing)
+                dialog.show()
+
+        }catch (e:Exception){
+            Log.i("TAG", "disclaimerDialog: Error=${e.localizedMessage}")
+        }
+
+    }
+
 
 
     private fun signinFirebase() {

@@ -12,7 +12,7 @@
         <!ENTITY firebaseDbMode "live">
         <!ENTITY otpEnable "false">
         ]>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <string name="app_name" translatable="false">&appname;</string>
     // Application name
@@ -546,6 +546,10 @@
     <string name="covid_desc_4">Don’t take a ride if you have Covid-19 or related symptoms.</string>
     <string name="covid_desc_5">Be Safe and Stay Healthy!!!</string>
     <string name="covid_rating_desc">Ensure That the Ride is completed safely and followed the safety protocols.</string>
+
+    <string name="installed_app_alert" tools:ignore="MissingTranslation">This application get you installed application information for providing the best user experience and rides near you.</string>
+    <string name="location_disclaimer">This app collected location data to enable \'Search Vehicle Location\', \'Travel Route and Navigation\', \'Realtime Vehicle Movement\', when the app is in use.</string>
+
 
     <plurals name="minutes">
         <item quantity="one">%d&#160;Min</item>

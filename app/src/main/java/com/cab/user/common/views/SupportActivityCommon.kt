@@ -57,13 +57,22 @@ class SupportActivityCommon : CommonActivity(), SupportAdapter.OnClickListener {
     override fun onClick(pos: Int) {
         if (checkVersionModel.support[pos].id == 1) {
             onClickWhatsApp(checkVersionModel.support[pos].link)
+        } else {
+            redirectWeb(checkVersionModel.support[pos].link)
+        }
+
+    }
+
+   /* override fun onClick(pos: Int) {
+        if (checkVersionModel.support[pos].id == 1) {
+            onClickWhatsApp(checkVersionModel.support[pos].link)
         } else if (checkVersionModel.support[pos].id == 2) {
             openSkype(this, checkVersionModel.support[pos].link)
         } else {
             redirectWeb(checkVersionModel.support[pos].link)
         }
 
-    }
+    }*/
 
     private fun redirectWeb(link: String) {
         if (URLUtil.isValidUrl(link) || Patterns.WEB_URL.matcher(link).matches()) {
@@ -85,10 +94,10 @@ class SupportActivityCommon : CommonActivity(), SupportAdapter.OnClickListener {
     private fun openSkype(context: Context, skypeId: String) {
 
         // Make sure the Skype for Android client is installed
-        if (!isSkypeClientInstalled(context)) {
+      /*  if (!isSkypeClientInstalled(context)) {
             goToMarket(context)
             return
-        }
+        }*/
         val mySkypeUri = "skype:" + skypeId + "?chat"
         // Create the Intent from our Skype URI.
         val skypeUri = Uri.parse(mySkypeUri)

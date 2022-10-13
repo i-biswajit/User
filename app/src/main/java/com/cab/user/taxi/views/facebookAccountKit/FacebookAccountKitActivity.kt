@@ -1,16 +1,22 @@
 package com.cab.user.taxi.views.facebookAccountKit
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.text.Editable
-import android.text.TextUtils
-import android.text.TextWatcher
+import android.text.*
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
+import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
+import android.view.Window
 import android.view.animation.CycleInterpolator
 import android.view.animation.TranslateAnimation
+import android.webkit.WebView
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
@@ -23,6 +29,7 @@ import com.google.gson.Gson
 import com.hbb20.CountryCodePicker
 import com.cab.user.R
 import com.cab.user.common.configs.SessionManager
+import com.cab.user.common.custompalette.FontButton
 import com.cab.user.common.datamodels.JsonResponse
 import com.cab.user.common.interfaces.ApiService
 import com.cab.user.common.interfaces.ServiceListener
@@ -139,21 +146,26 @@ class FacebookAccountKitActivity : CommonActivity(), ServiceListener {
     private var isInternetAvailable: Boolean = false
 
 
+    private lateinit var tvTermConditions: TextView
+    private lateinit var iAgreeCheckBox: CheckBox
+    private var iAgree: Boolean = false
+
     @OnClick(R.id.fab_verify)
     fun startAnimationd() {
         //startAnimation();
         if (isPhoneNumberLayoutIsVisible && edtxPhoneNumber.text.toString().length > 5) {
 
             isInternetAvailable = commonMethods.isOnline(this)
-
-
-            isInternetAvailable = commonMethods.isOnline(this)
             if (isInternetAvailable) {
+
                 if (checkVersionModel.otpEnabled) {
                     callSendOTPAPI()
                 } else {
-                    redirectionActivity()
+                    if (iAgree) {
+                        redirectionActivity()
+                    }else Toast.makeText(this, "Please agree to continue", Toast.LENGTH_SHORT).show()
                 }
+
             } else {
                 commonMethods.showMessage(this, dialog, resources.getString(R.string.no_connection))
 
@@ -323,7 +335,102 @@ class FacebookAccountKitActivity : CommonActivity(), ServiceListener {
         })
 
         initDirectionChanges()
+
+        if (isForForgotPassword==0) {
+            findViewById<LinearLayout?>(R.id.ll_term_condition).visibility = View.VISIBLE
+            termConditionsDialog()
+        }
+
+        iAgreeCheckBox = findViewById(R.id.i_agree_box)
+        iAgreeCheckBox.isChecked = true
+
+        tvTermConditions = findViewById(R.id.tvTermConditions)
+        customTextView(tvTermConditions)
+
+
     }
+
+    private fun customTextView(view: TextView) {
+        val spanTxt = SpannableStringBuilder(
+            resources.getString(R.string.sigin_terms1)
+        )
+        spanTxt.append(resources.getString(R.string.sigin_terms2))
+        spanTxt.setSpan(
+            object : ClickableSpan() {
+                override fun onClick(widget: View) {
+                    val url = resources.getString(R.string.terms)
+                    val i = Intent(Intent.ACTION_VIEW)
+                    i.data = Uri.parse(url)
+                    i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(i)
+
+                }
+            },
+            spanTxt.length - resources.getString(R.string.sigin_terms2).length,
+            spanTxt.length,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        spanTxt.setSpan(
+            ForegroundColorSpan(ContextCompat.getColor(this, R.color.blue_text_color)),
+            spanTxt.length - resources.getString(R.string.sigin_terms2).length,
+            spanTxt.length,
+            0
+        )
+        spanTxt.append(resources.getString(R.string.sigin_terms3))
+        spanTxt.append(resources.getString(R.string.sigin_terms4))
+        spanTxt.setSpan(object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                val url = resources.getString(R.string.privacy_policy)
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(url)
+                i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(i)
+            }
+        }, spanTxt.length - resources.getString(R.string.sigin_terms4).length, spanTxt.length, 0)
+        spanTxt.setSpan(
+            ForegroundColorSpan(ContextCompat.getColor(this, R.color.blue_text_color)),
+            spanTxt.length - resources.getString(R.string.sigin_terms4).length,
+            spanTxt.length,
+            0
+        )
+        spanTxt.append(".")
+        view.movementMethod = LinkMovementMethod.getInstance()
+        view.setText(spanTxt, TextView.BufferType.SPANNABLE)
+    }
+
+
+    private fun termConditionsDialog() {
+        try {
+            val dialog= Dialog(this,android.R.style.Theme_Black_NoTitleBar_Fullscreen)
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.setContentView(R.layout.dialog_term_condition)
+
+
+            val webView = dialog.findViewById<WebView>(R.id.web_view_terms)  // set the custom dialog components - text, image and button
+            val btnAccept = dialog.findViewById<FontButton>(R.id.btnAccept)
+
+            webView.loadUrl(getString(R.string.privacy_policy))
+            webView.settings.javaScriptEnabled=true
+
+
+            btnAccept.setOnClickListener {
+                iAgreeCheckBox.isChecked = true
+                iAgreeCheckBox.isEnabled=false
+                iAgree=true
+                dialog.dismiss()
+            }
+
+            dialog.setCancelable(false)
+            dialog.setCanceledOnTouchOutside(false)
+
+            if (!dialog.isShowing)
+                dialog.show()
+
+        }catch (e:Exception){
+            Log.i("TAG", "termConditionsDialog: Error=${e.localizedMessage}")
+        }
+    }
+
 
     private fun initDirectionChanges() {
         val laydir = resources.getString(R.string.layout_direction)

@@ -12,12 +12,16 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import butterknife.BindView
@@ -91,14 +95,43 @@ class EnRoute : CommonActivity() {
         startActivity(intent)
     }
 
-    @OnClick(R.id.contactlayout)
+    /*@OnClick(R.id.contactlayout)
     fun contactlayout() {
         val intent = Intent(this, DriverContactActivity::class.java)
         intent.putExtra("drivername", tripDetailsModel.driverName)
         intent.putExtra("drivernumber", tripDetailsModel.mobileNumber)
         intent.putExtra(KEY_CALLER_ID, tripDetailsModel.driverId.toString())
         startActivity(intent)
+    }*/
+
+    @OnClick(R.id.contactlayout)
+    fun callThisNo() {
+        try {
+
+            if (ActivityCompat.checkSelfPermission(
+                    this,
+                    android.Manifest.permission.CALL_PHONE
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(
+                        android.Manifest.permission.CALL_PHONE
+                    ),
+                    1
+                )
+                return;
+            } else {
+                val callIntent = Intent(Intent.ACTION_CALL)
+                callIntent.data =
+                    Uri.parse("tel:${tripDetailsModel.mobileNumber}")
+                startActivity(callIntent)
+            }
+        } catch (e: Exception) {
+            Log.i("TAGA", "callThisNo: Error=${e.localizedMessage}")
+        }
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

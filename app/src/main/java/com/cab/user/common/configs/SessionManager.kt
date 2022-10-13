@@ -358,6 +358,9 @@ class SessionManager {
         get() = sharedPreferences.getString("notificationID", "").toString()
         set(notificationID) = sharedPreferences.edit().putString("notificationID", notificationID).apply()
 
+    var isDialogShown: String
+        get() = sharedPreferences.getString("isDialogShown", "").toString()
+        set(isDialogShown) = sharedPreferences.edit().putString("isDialogShown", isDialogShown).apply()
 
     fun clearDriverNameRatingAndProfilePicture() {
         val editor = sharedPreferences.edit()

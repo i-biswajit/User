@@ -10,6 +10,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e879747f4700e51a43e23a08e1d2a5ed/jetified-ccp-2.2.0/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e879747f4700e51a43e23a08e1d2a5ed/jetified-ccp-2.2.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e879747f4700e51a43e23a08e1d2a5ed/jetified-ccp-2.2.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dd7a66fbc6109298b2fa02912a78a47a/jetified-ccp-2.2.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dd7a66fbc6109298b2fa02912a78a47a/jetified-ccp-2.2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dd7a66fbc6109298b2fa02912a78a47a/jetified-ccp-2.2.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hbb20/ccp/2.2.0/eac8cce51c8f5fbede52c7a2116cbd949f724fef/ccp-2.2.0-javadoc.jar!/" />

@@ -30,6 +30,7 @@
         <entry key="..\:/other stuff/a_NewProject/a_RideIn/User/app/src/main/res/drawable/app_top_curve_ash_gray_small.xml" value="0.1495" />
         <entry key="..\:/other stuff/a_NewProject/a_RideIn/User/app/src/main/res/drawable/app_top_curve_white.xml" value="0.1915" />
         <entry key="..\:/other stuff/a_NewProject/a_RideIn/User/app/src/main/res/drawable/call_answering_page_background.xml" value="0.1915" />
+        <entry key="..\:/other stuff/a_NewProject/a_RideIn/User/app/src/main/res/drawable/ic_disclaimer.xml" value="0.1935" />
         <entry key="..\:/other stuff/a_NewProject/a_RideIn/User/app/src/main/res/drawable/ic_emergency_alert.xml" value="0.1" />
         <entry key="..\:/other stuff/a_NewProject/a_RideIn/User/app/src/main/res/drawable/ic_filter.xml" value="0.1915" />
         <entry key="..\:/other stuff/a_NewProject/a_RideIn/User/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
@@ -89,6 +90,8 @@
         <entry key="..\:/other stuff/a_NewProject/a_RideIn/User/app/src/main/res/layout/app_loader_view.xml" value="0.25833333333333336" />
         <entry key="..\:/other stuff/a_NewProject/a_RideIn/User/app/src/main/res/layout/app_nav_header_main.xml" value="0.25833333333333336" />
         <entry key="..\:/other stuff/a_NewProject/a_RideIn/User/app/src/main/res/layout/covid_feature_view.xml" value="0.25833333333333336" />
+        <entry key="..\:/other stuff/a_NewProject/a_RideIn/User/app/src/main/res/layout/dialog_term_condition.xml" value="0.25833333333333336" />
+        <entry key="..\:/other stuff/a_NewProject/a_RideIn/User/app/src/main/res/layout/disclaimer_dialog.xml" value="0.25833333333333336" />
         <entry key="..\:/other stuff/a_NewProject/a_RideIn/User/app/src/main/res/layout/layout_payment_method.xml" value="0.16458333333333333" />
         <entry key="..\:/other stuff/a_NewProject/a_RideIn/User/app/src/main/res/layout/popup_permission_helper.xml" value="0.25833333333333336" />
         <entry key="..\:/other stuff/a_NewProject/a_RideIn/User/app/src/main/res/layout/update_filters.xml" value="0.25833333333333336" />

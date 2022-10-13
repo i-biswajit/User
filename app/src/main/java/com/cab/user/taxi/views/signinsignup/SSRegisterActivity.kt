@@ -8,6 +8,7 @@ package com.cab.user.taxi.views.signinsignup
  *
  */
 
+import android.app.Dialog
 import android.content.Intent
 import android.content.res.Configuration
 import android.net.Uri
@@ -17,8 +18,10 @@ import android.text.*
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.Gravity
 import android.view.View
+import android.view.Window
 import android.view.WindowManager
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
@@ -152,7 +155,8 @@ class SSRegisterActivity : CommonActivity(), ServiceListener {
      * Check is email validation
      */
     private fun isValidEmail(email: String): Boolean {
-        return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+        return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email)
+            .matches()
     }
 
     @OnClick(R.id.socialdetailnext)
@@ -205,7 +209,8 @@ class SSRegisterActivity : CommonActivity(), ServiceListener {
 
             if (input_email.text.isNotEmpty()) {
                 input_email.isEnabled = false
-                input_email.isFocusableInTouchMode = false; // user touches widget on phone with touch screen
+                input_email.isFocusableInTouchMode =
+                    false; // user touches widget on phone with touch screen
                 input_email.isClickable = false;
             }
 
@@ -245,8 +250,9 @@ class SSRegisterActivity : CommonActivity(), ServiceListener {
         input_password.addTextChangedListener(NameTextWatcher(input_password))
 
         if (commonMethods.getAuthType().equals("google")
-                || commonMethods.getAuthType().equals("facebook")
-                || commonMethods.getAuthType().equals("apple")) {
+            || commonMethods.getAuthType().equals("facebook")
+            || commonMethods.getAuthType().equals("apple")
+        ) {
             input_layout_password.visibility = View.GONE
             isSocialLogin = true
         }
@@ -258,7 +264,8 @@ class SSRegisterActivity : CommonActivity(), ServiceListener {
             sociaDetailNext.setBackground(resources.getDrawable(R.drawable.app_curve_button_yellow_disable))
         }*/
         sociaDetailNext.isClickable = false
-        sociaDetailNext.background = resources.getDrawable(R.drawable.app_curve_button_yellow_disable)
+        sociaDetailNext.background =
+            resources.getDrawable(R.drawable.app_curve_button_yellow_disable)
     }
 
     private fun showOrHideReferralAccordingToSessionData() {
@@ -293,7 +300,7 @@ class SSRegisterActivity : CommonActivity(), ServiceListener {
             recreate()
             //Intent intent = new Intent(SigninSignupActivity.this, SigninSignupActivity.class);
             val intent = baseContext.packageManager
-                    .getLaunchIntentForPackage(baseContext.packageName)
+                .getLaunchIntentForPackage(baseContext.packageName)
             intent!!.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
         }
@@ -314,7 +321,8 @@ class SSRegisterActivity : CommonActivity(), ServiceListener {
             return
         }
         if (selectedGender.isNullOrEmpty()) {
-            Toast.makeText(this, resources.getString(R.string.error_gender), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, resources.getString(R.string.error_gender), Toast.LENGTH_SHORT)
+                .show();
             return
         }
         if (!validatePassword() && !isSocialLogin) {
@@ -346,9 +354,12 @@ class SSRegisterActivity : CommonActivity(), ServiceListener {
 
     private fun getMobileNumerAndCountryCodeFromIntent() {
         if (intent != null) {
-            facebookKitVerifiedMobileNumber = intent.getStringExtra(FACEBOOK_ACCOUNT_KIT_PHONE_NUMBER_KEY)!!
-            facebookVerifiedMobileNumberCountryCode = intent.getStringExtra(FACEBOOK_ACCOUNT_KIT_PHONE_NUMBER_COUNTRY_CODE_KEY)!!
-            facebookVerifiedMobileNumberCountryNameCode = intent.getStringExtra(FACEBOOK_ACCOUNT_KIT_PHONE_NUMBER_COUNTRY_NAME_CODE_KEY)!!
+            facebookKitVerifiedMobileNumber =
+                intent.getStringExtra(FACEBOOK_ACCOUNT_KIT_PHONE_NUMBER_KEY)!!
+            facebookVerifiedMobileNumberCountryCode =
+                intent.getStringExtra(FACEBOOK_ACCOUNT_KIT_PHONE_NUMBER_COUNTRY_CODE_KEY)!!
+            facebookVerifiedMobileNumberCountryNameCode =
+                intent.getStringExtra(FACEBOOK_ACCOUNT_KIT_PHONE_NUMBER_COUNTRY_NAME_CODE_KEY)!!
 
             input_phone.setText(facebookKitVerifiedMobileNumber)
             input_phone.isEnabled = false
@@ -393,7 +404,8 @@ class SSRegisterActivity : CommonActivity(), ServiceListener {
      * validate phone number
      */
     private fun validatePhone(): Boolean {
-        if (input_phone.text.toString().trim { it <= ' ' }.isEmpty() || input_phone.text.toString().length < 6) {
+        if (input_phone.text.toString().trim { it <= ' ' }
+                .isEmpty() || input_phone.text.toString().length < 6) {
             // input_layout_phone.setError(getString(R.string.error_msg_phone));
             //requestFocus(input_phone);
             return false
@@ -407,7 +419,8 @@ class SSRegisterActivity : CommonActivity(), ServiceListener {
      * validate password
      */
     private fun validatePassword(): Boolean {
-        if (input_password.text.toString().trim { it <= ' ' }.isEmpty() || input_password.text.toString().length < 6) {
+        if (input_password.text.toString().trim { it <= ' ' }
+                .isEmpty() || input_password.text.toString().length < 6) {
             //input_layout_password.setError(getString(R.string.error_msg_password));
             //    requestFocus(input_password)
             return false
@@ -452,19 +465,30 @@ class SSRegisterActivity : CommonActivity(), ServiceListener {
      */
     private fun customTextView(view: TextView) {
         val spanTxt = SpannableStringBuilder(
-                resources.getString(R.string.sigin_terms1))
+            resources.getString(R.string.sigin_terms1)
+        )
         spanTxt.append(resources.getString(R.string.sigin_terms2))
-        spanTxt.setSpan(object : ClickableSpan() {
-            override fun onClick(widget: View) {
-                val url = Termpolicy
-                val i = Intent(Intent.ACTION_VIEW)
-                i.data = Uri.parse(url)
-                i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(i)
+        spanTxt.setSpan(
+            object : ClickableSpan() {
+                override fun onClick(widget: View) {
+                    val url = Termpolicy
+                    val i = Intent(Intent.ACTION_VIEW)
+                    i.data = Uri.parse(url)
+                    i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(i)
 
-            }
-        }, spanTxt.length - resources.getString(R.string.sigin_terms2).length, spanTxt.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spanTxt.setSpan(ForegroundColorSpan(ContextCompat.getColor(this, R.color.blue_text_color)), spanTxt.length - resources.getString(R.string.sigin_terms2).length, spanTxt.length, 0)
+                }
+            },
+            spanTxt.length - resources.getString(R.string.sigin_terms2).length,
+            spanTxt.length,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        spanTxt.setSpan(
+            ForegroundColorSpan(ContextCompat.getColor(this, R.color.blue_text_color)),
+            spanTxt.length - resources.getString(R.string.sigin_terms2).length,
+            spanTxt.length,
+            0
+        )
         spanTxt.append(resources.getString(R.string.sigin_terms3))
         spanTxt.append(resources.getString(R.string.sigin_terms4))
         spanTxt.setSpan(object : ClickableSpan() {
@@ -476,7 +500,12 @@ class SSRegisterActivity : CommonActivity(), ServiceListener {
                 startActivity(i)
             }
         }, spanTxt.length - resources.getString(R.string.sigin_terms4).length, spanTxt.length, 0)
-        spanTxt.setSpan(ForegroundColorSpan(ContextCompat.getColor(this, R.color.blue_text_color)), spanTxt.length - resources.getString(R.string.sigin_terms4).length, spanTxt.length, 0)
+        spanTxt.setSpan(
+            ForegroundColorSpan(ContextCompat.getColor(this, R.color.blue_text_color)),
+            spanTxt.length - resources.getString(R.string.sigin_terms4).length,
+            spanTxt.length,
+            0
+        )
         spanTxt.append(".")
         view.movementMethod = LinkMovementMethod.getInstance()
         view.setText(spanTxt, TextView.BufferType.SPANNABLE)
@@ -546,7 +575,8 @@ class SSRegisterActivity : CommonActivity(), ServiceListener {
         if (isSocialLogin) {
             if (validateFirst() && validateLast() && validateEmail() && !selectedGender.isNullOrEmpty()) {
                 sociaDetailNext.isClickable = true
-                sociaDetailNext.background = resources.getDrawable(R.drawable.app_curve_button_yellow)
+                sociaDetailNext.background =
+                    resources.getDrawable(R.drawable.app_curve_button_yellow)
             } else {
                 sociaDetailNext.isClickable = false
                 sociaDetailNext.setBackground(resources.getDrawable(R.drawable.app_curve_button_yellow_disable))
@@ -658,7 +688,8 @@ class SSRegisterActivity : CommonActivity(), ServiceListener {
         signinResult = gson.fromJson(jsonResp.strResponse, SigninResult::class.java)
         sessionManager.isrequest = false
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            sessionManager.currencySymbol = Html.fromHtml(signinResult.currencySymbol, Html.FROM_HTML_MODE_LEGACY).toString()
+            sessionManager.currencySymbol =
+                Html.fromHtml(signinResult.currencySymbol, Html.FROM_HTML_MODE_LEGACY).toString()
         } else {
             sessionManager.currencySymbol = Html.fromHtml(signinResult.currencySymbol).toString()
         }
@@ -669,9 +700,40 @@ class SSRegisterActivity : CommonActivity(), ServiceListener {
         sessionManager.countryCode = sessionManager.temporaryCountryCode
         sessionManager.phoneNumber = sessionManager.temporaryPhonenumber
 
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        overridePendingTransition(R.anim.ub__slide_in_right, R.anim.ub__slide_out_left)
-        finishAffinity()
+        if (sessionManager.isDialogShown.equals("")) {
+            disclaimerDialog()
+        }
+    }
+
+    private fun disclaimerDialog() {
+        try {
+            val dialog = Dialog(this, R.style.DialogCustomTheme)
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.setContentView(R.layout.disclaimer_dialog)
+
+            val tvDisclaimer = dialog.findViewById<TextView>(R.id.tvDisclaimer)
+            val tvAccept = dialog.findViewById<TextView>(R.id.tvAccept)
+
+            tvDisclaimer.setText(getString(R.string.location_disclaimer))
+
+            tvAccept.setOnClickListener {
+                sessionManager.isDialogShown = "yes"
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                overridePendingTransition(R.anim.ub__slide_in_right, R.anim.ub__slide_out_left)
+                finishAffinity()
+                dialog.dismiss()
+            }
+
+            dialog.setCancelable(false)
+            dialog.setCanceledOnTouchOutside(false)
+
+            if (!dialog.isShowing)
+                dialog.show()
+
+        } catch (e: Exception) {
+            Log.i("TAG", "disclaimerDialog: Error=${e.localizedMessage}")
+        }
+
     }
 }
