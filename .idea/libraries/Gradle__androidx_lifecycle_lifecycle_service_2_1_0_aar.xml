@@ -2,7 +2,6 @@
   <library name="Gradle: androidx.lifecycle:lifecycle-service:2.1.0@aar">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/70b9628345ed37ff672d1a6a15445870/jetified-lifecycle-service-2.1.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/70b9628345ed37ff672d1a6a15445870/jetified-lifecycle-service-2.1.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/70b9628345ed37ff672d1a6a15445870/jetified-lifecycle-service-2.1.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />

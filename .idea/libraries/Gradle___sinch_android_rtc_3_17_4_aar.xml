@@ -1,17 +1,7 @@
 <component name="libraryTable">
   <library name="Gradle: :sinch-android-rtc:3.17.4@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b44a9100c67d533e7cbf4f67fb1575be/jetified-sinch-android-rtc-3.17.4/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b44a9100c67d533e7cbf4f67fb1575be/jetified-sinch-android-rtc-3.17.4/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b44a9100c67d533e7cbf4f67fb1575be/jetified-sinch-android-rtc-3.17.4/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/df1d265dde34f30e421efd4aea34f51f/jetified-sinch-android-rtc-3.17.4/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/df1d265dde34f30e421efd4aea34f51f/jetified-sinch-android-rtc-3.17.4/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/df1d265dde34f30e421efd4aea34f51f/jetified-sinch-android-rtc-3.17.4/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5f1a48b140fe828a2dd2d75a23354d1b/jetified-sinch-android-rtc-3.17.4/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5f1a48b140fe828a2dd2d75a23354d1b/jetified-sinch-android-rtc-3.17.4/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5f1a48b140fe828a2dd2d75a23354d1b/jetified-sinch-android-rtc-3.17.4/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/be5a43f94391fc25444c073fb045afa8/jetified-sinch-android-rtc-3.17.4/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/be5a43f94391fc25444c073fb045afa8/jetified-sinch-android-rtc-3.17.4/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/be5a43f94391fc25444c073fb045afa8/jetified-sinch-android-rtc-3.17.4/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />

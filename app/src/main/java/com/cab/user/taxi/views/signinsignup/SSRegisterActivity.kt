@@ -700,9 +700,7 @@ class SSRegisterActivity : CommonActivity(), ServiceListener {
         sessionManager.countryCode = sessionManager.temporaryCountryCode
         sessionManager.phoneNumber = sessionManager.temporaryPhonenumber
 
-        if (sessionManager.isDialogShown.equals("")) {
-            disclaimerDialog()
-        }
+        disclaimerDialog()
     }
 
     private fun disclaimerDialog() {

@@ -52,7 +52,8 @@
                     android:text="@string/drivewithuber"
                     android:textColor="@color/app_secondary_text"
                     android:textSize="@dimen/_13asp"
-                    app:fontName="@string/font_Medium" />
+                    app:fontName="@string/font_Medium"
+                    android:visibility="gone" />
 
 
                 <com.cab.user.common.custompalette.FontTextView
@@ -68,7 +69,8 @@
 
         </com.google.android.material.navigation.NavigationView>
 
-    </androidx.drawerlayout.widget.DrawerLayout><!--
+    </androidx.drawerlayout.widget.DrawerLayout>
+    <!--
         <include layout="@layout/activity_fare_estimation" />
     -->
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
