@@ -123,7 +123,6 @@ allprojects {
 }
 
 dependencies {
-//    implementation(name: 'sinch-android-rtc', version: '+', ext: 'aar')
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
