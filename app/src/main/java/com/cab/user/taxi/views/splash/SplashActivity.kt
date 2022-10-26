@@ -16,10 +16,12 @@ import android.os.Build
 import android.os.Bundle
 import android.os.LocaleList
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.view.ContextThemeWrapper
 import com.google.gson.Gson
@@ -134,16 +136,21 @@ class SplashActivity : CommonActivity(), ServiceListener {
 
 
     override fun onSuccess(jsonResp: JsonResponse, data: String) {
-
-        when (jsonResp.requestCode) {
-            REG_GET_CHECK_VERSION -> {
-                checkVersionModel = gson.fromJson(jsonResp.strResponse, CheckVersionModel::class.java);
-                if (checkVersionModel.statusCode.equals("1")) {
-                    onSuccessCheckVersion(checkVersionModel)
-                } else if (!TextUtils.isEmpty(checkVersionModel.statusMessage)) {
-                    commonMethods.showMessage(this, dialog, checkVersionModel.statusMessage!!)
+        try {
+            Log.i("CHECK_VERSION", "onSuccess: jsonResp=${Gson().toJson(jsonResp)}")
+            Log.i("CHECK_VERSION", "onSuccess: data=$data")
+            when (jsonResp.requestCode) {
+                REG_GET_CHECK_VERSION -> {
+                    checkVersionModel = gson.fromJson(jsonResp.strResponse, CheckVersionModel::class.java);
+                    if (checkVersionModel.statusCode.equals("1")) {
+                        onSuccessCheckVersion(checkVersionModel)
+                    } else if (!TextUtils.isEmpty(checkVersionModel.statusMessage)) {
+                        commonMethods.showMessage(this, dialog, checkVersionModel.statusMessage!!)
+                    }
                 }
             }
+        } catch (e: Exception) {
+            Toast.makeText(this, "Please check your checkVersion api", Toast.LENGTH_SHORT).show()
         }
     }
 

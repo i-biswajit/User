@@ -42,7 +42,7 @@
             android:name="com.cab.user.common.network.AppController"
             android:allowBackup="false"
             android:fullBackupContent="false"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/app_logo"
             android:label="@string/app_name"
             android:largeHeap="true"
             android:noHistory="false"
