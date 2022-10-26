@@ -206,7 +206,6 @@ class CancelYourTripActivity : CommonActivity(), ServiceListener {
                     sessionManager.clearTripID()
                     sessionManager.isDriverAndRiderAbleToChat = false
                     CommonMethods.stopFirebaseChatListenerService(this)
-                    CommonMethods.stopSinchService(this)
                     sessionManager.isrequest = false
                     sessionManager.isTrip = false
                     //commonMethods.showMessage(this,dialog,getResources().getString(R.string.cancel_msg));
@@ -241,7 +240,6 @@ class CancelYourTripActivity : CommonActivity(), ServiceListener {
                     sessionManager.clearTripID()
                     sessionManager.isDriverAndRiderAbleToChat = false
                     CommonMethods.stopFirebaseChatListenerService(this)
-                    CommonMethods.stopSinchService(this)
                     sessionManager.isrequest = false
                     sessionManager.isTrip = false
                     //commonMethods.showMessage(this,dialog,getResources().getString(R.string.cancel_msg));

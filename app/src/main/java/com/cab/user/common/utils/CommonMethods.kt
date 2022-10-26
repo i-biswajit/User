@@ -42,6 +42,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.content.res.ResourcesCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import androidx.multidex.BuildConfig.APPLICATION_ID
 import com.braintreepayments.api.models.ThreeDSecureAdditionalInformation
 import com.braintreepayments.api.models.ThreeDSecurePostalAddress
 import com.braintreepayments.api.models.ThreeDSecureRequest
@@ -54,7 +55,6 @@ import com.google.firebase.messaging.FirebaseMessaging
 import com.stripe.android.PaymentConfiguration
 import com.stripe.android.Stripe
 import com.stripe.android.model.ConfirmPaymentIntentParams
-import com.cab.user.BuildConfig
 import com.cab.user.R
 import com.cab.user.common.configs.SessionManager
 import com.cab.user.common.datamodels.JsonResponse
@@ -71,8 +71,7 @@ import com.cab.user.taxi.sendrequest.SendingRequestActivity
 import com.cab.user.taxi.views.customize.CustomDialog
 import com.cab.user.taxi.views.firebaseChat.ActivityChat
 import com.cab.user.taxi.views.main.MainActivity
-import com.cab.user.taxi.views.voip.CabmeSinchService
-import com.cab.user.taxi.views.voip.CabmeSinchService.Companion.sinchClient
+
 import kotlinx.android.synthetic.main.app_common_header.view.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -692,24 +691,7 @@ class CommonMethods {
 
         }
 
-        fun startSinchService(mContext: Context) {
-            mContext.startService(Intent(mContext, CabmeSinchService::class.java))
-        }
 
-        fun stopSinchService(mContext: Context) {
-            try {
-                if (sinchClient != null) {
-                    sinchClient!!.stopListeningOnActiveConnection()
-                    sinchClient!!.terminate()
-                    sinchClient = null
-                }
-
-                mContext.stopService(Intent(mContext, CabmeSinchService::class.java))
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-
-        }
 
         fun showInternetNotAvailableForStoredDataViewer(mContext: Context) {
             /*val inflater: LayoutInflater = mContext.getLayoutInflater()
@@ -756,7 +738,6 @@ class CommonMethods {
 
 
     private fun stopSinchService(context: Context) {
-        CommonMethods.stopSinchService(context)
 
     }
 
@@ -1371,9 +1352,9 @@ class CommonMethods {
 
 
     private fun initSinchService(context: Context) {
-        if (sessionManager.accessToken != "") {
+       /* if (sessionManager.accessToken != "") {
             context.startService(Intent(context, CabmeSinchService::class.java))
-        }
+        }*/
 
     }
 
@@ -1429,7 +1410,7 @@ class CommonMethods {
 
     fun cameraIntent(imageFile: File, activity: AppCompatActivity) {
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        val imageUri = FileProvider.getUriForFile(activity, BuildConfig.APPLICATION_ID + ".provider", imageFile)
+        val imageUri = FileProvider.getUriForFile(activity, APPLICATION_ID + ".provider", imageFile)
         try {
             val resolvedIntentActivities = activity.packageManager.queryIntentActivities(cameraIntent, PackageManager.MATCH_DEFAULT_ONLY)
             for (resolvedIntentInfo in resolvedIntentActivities) {

@@ -18,8 +18,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.multidex.BuildConfig.APPLICATION_ID
 
-import com.cab.user.BuildConfig
 import com.cab.user.R
 
 import java.util.Objects
@@ -93,7 +93,7 @@ class RuntimePermissionDialogFragment : DialogFragment() {
         if (ableToRequestPermission) {
             requestNecessaryPermissions()
         } else {
-            mContext!!.startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + BuildConfig.APPLICATION_ID)))
+            mContext!!.startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + APPLICATION_ID)))
             dismiss()
         }
     }

@@ -48,7 +48,6 @@ import com.cab.user.common.utils.CommonKeys
 import com.cab.user.common.utils.CommonMethods
 import com.cab.user.common.utils.CommonMethods.Companion.DebuggableLogI
 import com.cab.user.common.utils.CommonMethods.Companion.DebuggableLogV
-import com.cab.user.common.utils.CommonMethods.Companion.stopSinchService
 import com.cab.user.common.utils.Enums
 import com.cab.user.common.utils.Enums.REQ_CURRENCYLIST
 import com.cab.user.common.utils.Enums.REQ_GET_RIDER_PROFILE
@@ -444,7 +443,6 @@ class Setting : CommonActivity(), ServiceListener,UserChoiceSuccessResponse {
         val lang = sessionManager.language
         val langCode = sessionManager.languageCode
         val clientId = sessionManager.appleLoginClientId
-        stopSinchService(this)
 
         sessionManager.clearToken()
         sessionManager.clearAll()

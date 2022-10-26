@@ -62,8 +62,6 @@ import com.cab.user.taxi.views.peakPricing.PeakPricing
 import com.cab.user.taxi.views.search.PlaceSearchActivity
 import com.cab.user.taxi.views.signinsignup.*
 import com.cab.user.taxi.views.splash.SplashActivity
-import com.cab.user.taxi.views.voip.CallProcessingActivity
-import com.cab.user.taxi.views.voip.CabmeSinchService
 
 import javax.inject.Singleton
 
@@ -140,9 +138,6 @@ interface AppComponent {
 
     fun inject(showReferralOptions: ShowReferralOptions)
 
-    fun inject(callProcessingActivity: CallProcessingActivity)
-
-    fun inject(CabmeSinchService: CabmeSinchService)
 
     // Fragments
     fun inject(past: Past)

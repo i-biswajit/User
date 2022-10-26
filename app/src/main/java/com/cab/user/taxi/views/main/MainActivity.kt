@@ -106,7 +106,6 @@ import com.cab.user.common.utils.CommonMethods.Companion.DebuggableLogE
 import com.cab.user.common.utils.CommonMethods.Companion.DebuggableLogI
 import com.cab.user.common.utils.CommonMethods.Companion.DebuggableLogV
 import com.cab.user.common.utils.CommonMethods.Companion.startChatActivityFrom
-import com.cab.user.common.utils.CommonMethods.Companion.startSinchService
 import com.cab.user.common.utils.Enums.REG_GET_PAYMENTMETHOD
 import com.cab.user.common.utils.Enums.REQ_COMMON_DATA
 import com.cab.user.common.utils.Enums.REQ_GET_DRIVER
@@ -2694,7 +2693,6 @@ class MainActivity : CommonActivity(), SeatsListAdapter.OnClickListener, Navigat
 
         // If trips status is schedule or begin trip or endtrip to open the trips page ( Map Page)
         if ("Scheduled" == tripStatus || "Begin trip" == tripStatus || "End trip" == tripStatus) {
-            startSinchService(this)
             commonMethods.hideProgressDialog()
             if ("Scheduled" == tripStatus) {
                 sessionManager.tripStatus = "arrive_now"
@@ -3918,7 +3916,6 @@ class MainActivity : CommonActivity(), SeatsListAdapter.OnClickListener, Navigat
     }
 
     fun isTripFunc() {
-        startSinchService(this)
         whereto.visibility = View.GONE
         whereto_and_schedule.visibility = View.GONE
         meetlayout.visibility = View.VISIBLE

@@ -487,7 +487,6 @@ class SendingRequestActivity : CommonActivity(), LinearTimer.TimerListener, Serv
      * After driver accept the request to get driver details from the API
      */
     fun getTripDetails(tripId: String) {
-        CommonMethods.startSinchService(this)
         MainActivity.isMainActivity = true
         sessionManager.tripId = tripId
         commonMethods.showProgressDialog(this)

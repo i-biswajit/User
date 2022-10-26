@@ -24,7 +24,6 @@ import com.cab.user.common.utils.CommonKeys
 import com.cab.user.common.utils.CommonKeys.KEY_CALLER_ID
 import com.cab.user.common.utils.CommonMethods
 import com.cab.user.common.views.CommonActivity
-import com.cab.user.taxi.views.voip.CallProcessingActivity
 import kotlinx.android.synthetic.main.app_activity_payment_page.*
 import javax.inject.Inject
 
@@ -90,15 +89,8 @@ class DriverContactActivity : CommonActivity() {
 
         callbutton.setOnClickListener {
 
-            if (sessionManager.bookingType.equals("Manual Booking",ignoreCase = true)) {
-                val intent =  Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + driver_phone_contact.getText().toString()));
-                startActivity(intent);
-            }else {
-                val callScreenIntent = Intent(this@DriverContactActivity, CallProcessingActivity::class.java)
-                callScreenIntent.putExtra(CommonKeys.TYPE_INTENT_ARGUMENT_KEY, CallProcessingActivity.CallActivityType.CallProcessing)
-                callScreenIntent.putExtra(KEY_CALLER_ID, callerId)
-                startActivity(callScreenIntent)
-            }
+            val intent =  Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + driver_phone_contact.getText().toString()));
+            startActivity(intent);
         }
     }
 
