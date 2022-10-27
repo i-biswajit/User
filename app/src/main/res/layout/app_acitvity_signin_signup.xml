@@ -137,20 +137,9 @@
                     <include
                             android:id="@+id/v_google"
                             layout="@layout/app_social_login_view"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="@dimen/_10adp"
-                            android:layout_weight="1"
-                            />
-
-                    <include
-
-                            android:id="@+id/v_facebook"
-                            layout="@layout/app_social_facebook_view"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/_10adp"
-                            android:layout_weight="1"
                             />
 
 

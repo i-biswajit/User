@@ -5,7 +5,6 @@
         <!ENTITY driverAppName "Ridein Driver">
         <!ENTITY driverbundle "com.cab.driver">
         <!ENTITY siteurl "https://uat.ridein.in/">
-        <!ENTITY facebookKey "AIzaSyDfPZLkGFSJVBQcLaRxy5GydvtIryBdSs8">
         <!ENTITY googleMapKey "AIzaSyDfPZLkGFSJVBQcLaRxy5GydvtIryBdSs8">
         <!ENTITY googleAutoCompleteKey "AIzaSyDfPZLkGFSJVBQcLaRxy5GydvtIryBdSs8">
         <!ENTITY googleClientId "AIzaSyDfPZLkGFSJVBQcLaRxy5GydvtIryBdSs8">
@@ -19,8 +18,6 @@
     // Application name
     <string name="package_driver" translatable="false">&driverbundle;</string>
 
-    <string name="facebook_key" translatable="false">&facebookKey;</string>
-    <string name="facebook_provider" translatable="false">"com.facebook.app.FacebookContentProvider&facebookKey;"</string>
 
     <string name="google_maps_key" translatable="false">&googleMapKey;</string>
     <string name="google_key_url" translatable="false">&googleAutoCompleteKey;</string>

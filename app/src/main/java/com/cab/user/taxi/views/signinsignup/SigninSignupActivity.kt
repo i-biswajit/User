@@ -36,9 +36,6 @@ import androidx.recyclerview.widget.RecyclerView
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
-import com.facebook.*
-import com.facebook.login.LoginManager
-import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -126,11 +123,9 @@ class SigninSignupActivity : CommonActivity(), ServiceListener, UserChoiceSucces
     @BindView(R.id.v_google)
     lateinit var vGoogle: View
 
-    @BindView(R.id.v_facebook)
-    lateinit var vFacebook: View
+
 
     lateinit var googleCustomView: CustomView
-    lateinit var facebookCustomView: CustomView
 
     @BindView(R.id.sign_in_with_apple_button_white)
     lateinit var signInWithAppleButtonBlack: SignInWithAppleButton
@@ -143,7 +138,6 @@ class SigninSignupActivity : CommonActivity(), ServiceListener, UserChoiceSucces
 
     var count = 1
     lateinit var mGoogleSignInClient: GoogleSignInClient
-    private var callbackManager: CallbackManager? = null
     lateinit var fbEmail: String
     lateinit var fbFullName: String
     lateinit var fbID: String
@@ -205,17 +199,6 @@ class SigninSignupActivity : CommonActivity(), ServiceListener, UserChoiceSucces
 
     }
 
-    @OnClick(R.id.v_facebook)
-    fun fblogin() {
-        isInternetAvailable = commonMethods.isOnline(applicationContext)
-        if (!isInternetAvailable) {
-            commonMethods.showMessage(this, dialog, getString(R.string.no_connection))
-        } else {
-            commonMethods.showProgressDialog(this)
-            LoginManager.getInstance().logOut()//Logout Facebook
-            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email"))
-        }
-    }
 
     @OnClick(R.id.v_google)
     fun gplogin() {
@@ -323,9 +306,6 @@ class SigninSignupActivity : CommonActivity(), ServiceListener, UserChoiceSucces
         googleCustomView = CustomView(v_google)
         googleCustomView.ivIcon.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.app_ic_google))
         googleCustomView.tvTitle.text = resources.getString(R.string.google)
-        facebookCustomView = CustomView(v_facebook)
-        facebookCustomView.ivIcon.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.app_ic_facebook))
-        facebookCustomView.tvTitle.text = resources.getString(R.string.facebook)
     }
 
     private fun socialIsViewOrGone() {
@@ -336,13 +316,7 @@ class SigninSignupActivity : CommonActivity(), ServiceListener, UserChoiceSucces
         } else {
             signInWithAppleButtonBlack.visibility = View.GONE
         }
-        if (checkVersionModel.facebookLogin) {
-            vFacebook.visibility = View.VISIBLE
-            //Facebook Initialize
-            faceBookInitialize()
-        } else {
-            vFacebook.visibility = View.GONE
-        }
+
 
         if (checkVersionModel.googleLogin) {
             vGoogle.visibility = View.VISIBLE
@@ -352,35 +326,10 @@ class SigninSignupActivity : CommonActivity(), ServiceListener, UserChoiceSucces
             vGoogle.visibility = View.GONE
         }
 
-        if (checkVersionModel.googleLogin && !checkVersionModel.facebookLogin) {
-            changeAlignmentView(vGoogle)
-        } else if (!checkVersionModel.googleLogin && checkVersionModel.facebookLogin) {
-            changeAlignmentView(vFacebook)
-        }
-    }
-
-    private fun changeAlignmentView(relativeLayout: View) {
-        val rel_btn: LinearLayout.LayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-        relativeLayout.layoutParams = rel_btn
 
     }
 
-    /*private fun updateViews(){
-        val params = LanguageText.layoutParams as RelativeLayout.LayoutParams
-        val params2 = language.layoutParams as RelativeLayout.LayoutParams
 
-        params.addRule(RelativeLayout.CENTER_VERTICAL)
-        params.addRule(RelativeLayout.ALIGN_PARENT_START)
-
-        params2.addRule(RelativeLayout.CENTER_VERTICAL)
-        params2.addRule(RelativeLayout.ALIGN_PARENT_END)
-
-        rltsocial.setPadding(16,20,0,20)
-
-        LanguageText.layoutParams = params
-        language.layoutParams = params2
-    }
-*/
     /**
      * Exit revel animation
      */
@@ -587,144 +536,19 @@ class SigninSignupActivity : CommonActivity(), ServiceListener, UserChoiceSucces
         signInWithAppleButtonBlack.setUpSignInWithAppleOnClick(supportFragmentManager, configuration, resources.getString(R.string.sign_apple), callback)
     }
 
-    /**
-     * Facebook SDK initialize
-     */
-    fun faceBookInitialize() {
-        //Facebook Initialize
-        FacebookSdk.sdkInitialize(applicationContext)
-        callbackManager = CallbackManager.Factory.create()
-
-        /**
-         * Get Facebook key hash for devloper
-         */
-        getFbKeyHash(CommonMethods.appPackageName)
-
-        LoginManager.getInstance().registerCallback(callbackManager,
-                object : FacebookCallback<LoginResult> {
-
-                    override fun onSuccess(loginResult: LoginResult) {
-                        /**
-                         * Get facebook user details
-                         */
-                        val request = GraphRequest.newMeRequest(
-                                loginResult.accessToken
-                        ) { `object`, _ ->
-                            fbEmail = `object`.optString("email")
-                            fbFullName = `object`.optString("name")
-                            println("FullName $fbFullName and obejct ${`object`.toString()}")
-                            fbID = `object`.optString("id")
-                            fbImageURL = "https://graph.facebook.com/" + fbID + "/picture";
-                            println("FBIMAGE URL " + fbImageURL)
-
-                            if (fbFullName.isNotEmpty()) {
-                                var firstName = ""
-                                var lastName = ""
-                                val idx = fbFullName.lastIndexOf(' ');
-                                try {
-                                    firstName = fbFullName.substring(0, idx);
-                                    lastName = fbFullName.substring(idx + 1);
-
-                                } catch (e: Exception) {
-                                    e.printStackTrace()
-                                }
-
-                                sessionManager.firstName = firstName
-                                sessionManager.lastName = lastName
-
-                            }
-                            sessionManager.email = fbEmail
-                            sessionManager.facebookId = fbID
-                            sessionManager.profilepicture = fbImageURL
-                            sessionManager.googleId = ""
-                            sessionManager.appleId = ""
-                            isInternetAvailable = commonMethods.isOnline(applicationContext)
-                            if (!isInternetAvailable) {
-                                commonMethods.showMessage(this@SigninSignupActivity, dialog, getString(R.string.no_connection))
-                            } else {
-                                commonMethods.showProgressDialog(this@SigninSignupActivity)
-
-                                apiService.socialoldsignup(commonMethods.getAuthType(), commonMethods.getAuthId()!!, sessionManager.deviceType!!, sessionManager.deviceId!!, sessionManager.languageCode!!).enqueue(RequestCallback(Enums.REQ_SIGNUP, this@SigninSignupActivity))
-
-                                //  new checkId().execute(url);
-                            }
-                        }
-
-                        parameters = Bundle()
-                        parameters.putString("fields", "id,name,link,gender,birthday,email")
-                        request.parameters = parameters
-                        request.executeAsync()
-
-                        val bundle = Bundle()
-                        bundle.putString("fields", "token_for_business")
-
-                    }
-
-                    override fun onCancel() {
-                        commonMethods.hideProgressDialog()
-
-                    }
-
-                    override fun onError(e: FacebookException) {
-                        commonMethods.hideProgressDialog()
-                        DebuggableLogE("Facebooksdk", "Login with Facebook failure", e)
-                        Toast.makeText(applicationContext, "An unknown network error has occured", Toast.LENGTH_LONG).show()
-
-                    }
-
-                })
-    }
 
     /**
-     * Create FB KeyHash
-     */
-    fun getFbKeyHash(packageName: String) {
-
-        val info: PackageInfo
-        try {
-            info = packageManager.getPackageInfo(packageName, PackageManager.GET_SIGNATURES)
-            for (signature in info.signatures) {
-                val md: MessageDigest
-                md = MessageDigest.getInstance("SHA")
-                md.update(signature.toByteArray())
-                val something = String(Base64.encode(md.digest(), 0))
-                //String something = new String(Base64.encodeBytes(md.digest()));
-
-                DebuggableLogE("hash key", something)
-            }
-        } catch (e1: PackageManager.NameNotFoundException) {
-            DebuggableLogE("name not found", e1.toString())
-        } catch (e: NoSuchAlgorithmException) {
-            DebuggableLogE("no such an algorithm", e.toString())
-        } catch (e: Exception) {
-            DebuggableLogE("exception", e.toString())
-        }
-
-    }
-
-    /**
-     * Call Facebook StartActivity
+     * Call  StartActivity
      */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         commonMethods.hideProgressDialog()
 
-        if (requestCode == SigninSignupActivity.RC_SIGN_IN) {
+        if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             handleSignInResult(task)
             mIntentInProgress = false
 
-        } else if (requestCode == ACTIVITY_REQUEST_CODE_START_FACEBOOK_ACCOUNT_KIT) {
-            if (resultCode == Activity.RESULT_OK) {
-                openRegisterActivity(data!!.getStringExtra(FACEBOOK_ACCOUNT_KIT_PHONE_NUMBER_KEY).toString(), data.getStringExtra(FACEBOOK_ACCOUNT_KIT_PHONE_NUMBER_COUNTRY_CODE_KEY).toString(), data.getStringExtra(FACEBOOK_ACCOUNT_KIT_PHONE_NUMBER_COUNTRY_NAME_CODE_KEY).toString())
-            }
-        } else if (requestCode == ACTIVITY_REQUEST_CODE_START_FACEBOOK_ACCOUNT_KIT) {
-            if (resultCode == Activity.RESULT_OK) {
-                clearSocialCredintials()
-                openRegisterActivity(data!!.getStringExtra(FACEBOOK_ACCOUNT_KIT_PHONE_NUMBER_KEY).toString(), data.getStringExtra(FACEBOOK_ACCOUNT_KIT_PHONE_NUMBER_COUNTRY_CODE_KEY).toString(), data.getStringExtra(FACEBOOK_ACCOUNT_KIT_PHONE_NUMBER_COUNTRY_NAME_CODE_KEY).toString())
-            }
-        } else {
-            callbackManager!!.onActivityResult(requestCode, resultCode, data)
         }
 
     }

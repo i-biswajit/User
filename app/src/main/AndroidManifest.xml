@@ -16,6 +16,8 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- voip permission -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but are recommended.
@@ -80,22 +82,13 @@
             </intent-filter>
         </receiver>
 
-        <service
-                android:name="com.cab.user.taxi.views.voip.CabmeSinchService"
-                android:enabled="true"
-                android:exported="false" />
+
 
         <activity
                 android:name="com.cab.user.taxi.sendrequest.PaymentAmountPage"
                 android:screenOrientation="portrait"
                 android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-                android:name="com.cab.user.taxi.views.voip.CallProcessingActivity"
-                android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-                android:excludeFromRecents="true"
-                android:screenOrientation="portrait"
-                android:theme="@style/AppTheme.NoActionBar"
-                android:windowSoftInputMode="stateHidden" />
+
         <activity
                 android:name="com.cab.user.taxi.sendrequest.CancelYourTripActivity"
                 android:screenOrientation="portrait"
@@ -132,23 +125,6 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
-        <activity
-                android:name="com.facebook.FacebookActivity"
-                android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-                android:label="@string/app_name"
-                android:screenOrientation="portrait"
-                android:windowSoftInputMode="adjustPan" />
-
-        <meta-data
-                android:name="com.facebook.sdk.ApplicationId"
-                android:screenOrientation="portrait"
-                android:value="@string/facebook_key" />
-
-        <provider
-                android:name="com.facebook.FacebookContentProvider"
-                android:authorities="@string/facebook_provider"
-                android:exported="true" />
         <provider
                 android:name="androidx.core.content.FileProvider"
                 android:authorities="${applicationId}.provider"
