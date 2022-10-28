@@ -2589,6 +2589,8 @@ class MainActivity : CommonActivity(), SeatsListAdapter.OnClickListener, Navigat
     }
 
     private fun onSuccessCommonData(jsonResp: JsonResponse) {
+
+        Log.i(TAG, "onSuccessCommonData: DATA=${Gson().toJson(jsonResp)}")
         sessionManager.sinchSecret = commonMethods.getJsonValue(jsonResp.strResponse, "sinch_secret_key", String::class.java) as String
         sessionManager.sinchKey = commonMethods.getJsonValue(jsonResp.strResponse, "sinch_key", String::class.java) as String
         sessionManager.googleMapKey = resources.getString(R.string.google_key_url)
@@ -2746,6 +2748,8 @@ class MainActivity : CommonActivity(), SeatsListAdapter.OnClickListener, Navigat
 
     override fun onFailure(jsonResp: JsonResponse, data: String) {
         DebuggableLogV(TAG, "onFailure")
+        Log.i(TAG, "onFailure: Errorr jsonResp=${Gson().toJson(jsonResp)}")
+        Log.i(TAG, "onFailure: Errorr DATA=$data")
     }
 
     fun onSuccessDriver(jsonResp: JsonResponse) {
@@ -4313,6 +4317,7 @@ class MainActivity : CommonActivity(), SeatsListAdapter.OnClickListener, Navigat
     }
 
     fun getCommonDataAPI() {
+
         isMainActivity = true
         apiService.getCommonData(sessionManager.accessToken!!).enqueue(RequestCallback(REQ_COMMON_DATA, this))
     }

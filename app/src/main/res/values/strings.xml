@@ -4,7 +4,7 @@
         <!ENTITY appname "Ridein">
         <!ENTITY driverAppName "Ridein Driver">
         <!ENTITY driverbundle "com.cab.driver">
-        <!ENTITY siteurl "https://uat.ridein.in/">
+        <!ENTITY siteurl "https://ridein.in/">
         <!ENTITY googleMapKey "AIzaSyDfPZLkGFSJVBQcLaRxy5GydvtIryBdSs8">
         <!ENTITY googleAutoCompleteKey "AIzaSyDfPZLkGFSJVBQcLaRxy5GydvtIryBdSs8">
         <!ENTITY googleClientId "AIzaSyDfPZLkGFSJVBQcLaRxy5GydvtIryBdSs8">
@@ -12,7 +12,6 @@
         <!ENTITY otpEnable "false">
         ]>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!--        <!ENTITY siteurl "https://ridein.in/">-->
 
     <string name="app_name" translatable="false">&appname;</string>
     // Application name
